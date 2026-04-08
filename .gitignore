@@ -1,0 +1,8 @@
+target/
+artifacts/
+schema/
+.optimizer/
+.DS_Store
+*.log
+*.tmp
+.env
