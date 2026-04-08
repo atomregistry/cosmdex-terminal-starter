@@ -1,3 +1,4 @@
+use cosmwasm_schema::QueryResponses;
 use cosmwasm_std::Uint128;
 use cw20::Cw20ReceiveMsg;
 use schemars::JsonSchema;
@@ -79,27 +80,33 @@ pub enum Cw20HookMsg {
     },
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq, JsonSchema)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq, JsonSchema, QueryResponses)]
 #[serde(rename_all = "snake_case")]
 pub enum QueryMsg {
+    #[returns(ConfigResponse)]
     Config {},
+    #[returns(MarketBookResponse)]
     MarketBook {
         base_asset: AssetInfo,
         quote_asset: AssetInfo,
         limit: Option<u32>,
     },
+    #[returns(MarketsResponse)]
     Markets {
         start_after: Option<String>,
         limit: Option<u32>,
     },
+    #[returns(OrderResponse)]
     Order {
         order_id: u64,
     },
+    #[returns(OrdersResponse)]
     OrdersByUser {
         address: String,
         start_after: Option<u64>,
         limit: Option<u32>,
     },
+    #[returns(OrdersResponse)]
     OrdersByMarket {
         base_asset: AssetInfo,
         quote_asset: AssetInfo,
@@ -107,6 +114,7 @@ pub enum QueryMsg {
         start_after: Option<u64>,
         limit: Option<u32>,
     },
+    #[returns(FillsResponse)]
     FillsByOrder {
         order_id: u64,
         start_after: Option<u64>,
