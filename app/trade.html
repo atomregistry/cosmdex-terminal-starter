@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trade - Cosmos DEX Terminal</title>
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+    <div class="shell">
+        <aside class="sidebar">
+            <div class="brand">COSMOS DEX</div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="markets.html">Markets</a>
+                <a href="trade.html" class="active">Trade</a>
+                <a href="liquidity.html">Liquidity</a>
+                <a href="activity.html">Activity</a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <h1>Trade Terminal</h1>
+                    <p>Full orderbook workspace for Cosmos Hub native, tokenfactory, and IBC assets with trust-aware discovery, market selection, bids, asks, and order entry.</p>
+                </div>
+                <button id="walletBtn" class="btn" type="button">Connect Wallet</button>
+            </header>
+
+            <section class="trade-grid trade-grid-wide">
+                <div class="card">
+                    <h3>Add Asset</h3>
+
+                    <label for="assetDomainInput">Add by domain</label>
+                    <div class="button-row">
+                        <input id="assetDomainInput" type="text" placeholder="atomregistry.com" autocomplete="off" />
+                        <button class="btn" id="loadDomainAssetBtn" type="button">Load Domain</button>
+                    </div>
+
+                    <label for="assetDenomInput" style="margin-top: 16px;">Add by denom</label>
+                    <div class="button-row">
+                        <input id="assetDenomInput" type="text" placeholder="factory/... or ibc/... or uatom" autocomplete="off" />
+                        <button class="btn" id="loadDenomAssetBtn" type="button">Load Denom</button>
+                    </div>
+
+                    <label for="assetSymbolInput" style="margin-top: 16px;">Add by symbol</label>
+                    <div class="button-row">
+                        <input id="assetSymbolInput" type="text" placeholder="ATOM, ARM, USDC" autocomplete="off" />
+                        <button class="btn" id="loadSymbolAssetBtn" type="button">Find Symbol</button>
+                    </div>
+
+                    <div class="quote-box" style="margin-top: 18px;">
+                        <div><span>Loaded assets</span><strong id="loadedAssetCount">-</strong></div>
+                        <div><span>Selected market</span><strong id="quotePair">-</strong></div>
+                        <div><span>Spread</span><strong id="spreadView">-</strong></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Orderbook Status</h3>
+                    <pre id="tradeStatus" class="codebox shortbox">Idle</pre>
+
+                    <h3 style="margin-top: 18px;">Orderbook Address</h3>
+                    <pre id="pairAddressView" class="codebox shortbox">-</pre>
+                </div>
+
+                <div class="card">
+                    <h3>cosmos.toml Trust</h3>
+                    <div id="metadataTrustBadge" class="trust-badge unknown">Unknown</div>
+                    <div id="metadataProject" class="metadata-project">-</div>
+                    <div id="metadataSummary">No metadata summary available yet.</div>
+                </div>
+
+                <div class="card">
+                    <h3>Market Selection</h3>
+
+                    <label for="sellAsset">Base asset</label>
+                    <select id="sellAsset"></select>
+
+                    <label for="buyAsset">Quote asset</label>
+                    <select id="buyAsset"></select>
+
+                    <div class="button-row" style="margin-top: 16px;">
+                        <button class="btn ghost" id="flipMarketBtn" type="button">Flip Market</button>
+                        <button class="btn" id="refreshBookBtn" type="button">Refresh Book</button>
+                    </div>
+
+                    <div class="quote-box" style="margin-top: 18px;">
+                        <div><span>Best bid</span><strong id="bestBidView">-</strong></div>
+                        <div><span>Best ask</span><strong id="bestAskView">-</strong></div>
+                        <div><span>Top of book</span><strong id="quoteOut">-</strong></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Create Order</h3>
+
+                    <label for="orderSide">Order side</label>
+                    <select id="orderSide">
+                        <option value="sell">Sell</option>
+                        <option value="buy">Buy</option>
+                    </select>
+
+                    <label for="sellAmount">Base amount</label>
+                    <input id="sellAmount" type="number" min="0" step="any" placeholder="0.0" autocomplete="off" />
+
+                    <label for="limitPriceInput">Limit price</label>
+                    <input id="limitPriceInput" type="number" min="0" step="any" placeholder="0.0" autocomplete="off" />
+
+                    <div class="quote-box">
+                        <div><span>Order amount</span><strong id="orderAmountView">-</strong></div>
+                        <div><span>Est. fee mode</span><strong id="quoteFee">-</strong></div>
+                        <div><span>Settlement</span><strong id="settlementAssetView">-</strong></div>
+                    </div>
+
+                    <div class="button-row">
+                        <button class="btn" id="simulateBtn" type="button">Preview Order</button>
+                        <button class="btn ghost" id="swapBtn" type="button">Create Order</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Bids</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        Highest bid prices first. Clicking a row should eventually prefill the order form or fill flow.
+                    </p>
+                    <div class="table-shell">
+                        <table class="market-table">
+                            <thead>
+                                <tr>
+                                    <th>Price</th>
+                                    <th>Base Size</th>
+                                    <th>Remaining</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bidsTableBody">
+                                <tr>
+                                    <td colspan="3">No bids loaded.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Asks</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        Lowest ask prices first. Clicking a row should eventually prefill the order form or fill flow.
+                    </p>
+                    <div class="table-shell">
+                        <table class="market-table">
+                            <thead>
+                                <tr>
+                                    <th>Price</th>
+                                    <th>Base Size</th>
+                                    <th>Remaining</th>
+                                </tr>
+                            </thead>
+                            <tbody id="asksTableBody">
+                                <tr>
+                                    <td colspan="3">No asks loaded.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Your Open Orders</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        This panel should become cancel-ready as soon as live wallet signing and order cancel are wired.
+                    </p>
+                    <div class="table-shell">
+                        <table class="market-table">
+                            <thead>
+                                <tr>
+                                    <th>Side</th>
+                                    <th>Market</th>
+                                    <th>Remaining</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="openOrdersTableBody">
+                                <tr>
+                                    <td colspan="4">No open orders loaded.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <pre id="simResponseView" class="codebox" style="margin-top: 12px;">-</pre>
+                </div>
+
+                <div class="card">
+                    <h3>Loaded Asset Registry</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        This becomes the local trading registry for imported domain, denom, symbol, tokenfactory, and IBC assets.
+                    </p>
+                    <div class="table-shell">
+                        <table class="market-table">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Type</th>
+                                    <th>Identifier</th>
+                                    <th>Source</th>
+                                </tr>
+                            </thead>
+                            <tbody id="loadedAssetsTableBody">
+                                <tr>
+                                    <td colspan="4">No loaded assets yet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="metadataAssets" style="margin-top: 12px;">No asset metadata loaded.</div>
+                </div>
+
+                <div class="card">
+                    <h3>Market Chart</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        This chart is reserved for live orderbook-derived market movement once fills and price history are wired.
+                    </p>
+                    <div id="tradePriceChart" class="chart-shell" aria-label="Trade market chart area">
+                        <div class="chart-empty">Market chart will render here once orderbook price data is active.</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Bid / Ask Depth</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        This chart reflects current orderbook depth and should evolve as live bids and asks appear.
+                    </p>
+                    <div id="tradeLiquidityChart" class="chart-shell" aria-label="Trade orderbook depth chart area">
+                        <div class="chart-empty">Orderbook depth chart will render here once bid and ask data is active.</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Orderbook Config</h3>
+                    <pre id="pairConfigView" class="codebox">-</pre>
+                </div>
+
+                <div class="card">
+                    <h3>Market Book</h3>
+                    <pre id="poolView" class="codebox">-</pre>
+                </div>
+
+                <div class="card">
+                    <h3>Order Preview</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        This shows the order-create path the terminal intends to use after validation and policy checks.
+                    </p>
+                    <pre id="executionPreviewView" class="codebox">-</pre>
+                </div>
+
+                <div class="card">
+                    <h3>Order Result</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        This shows blocked, mock, preview-only, or live order creation results as the terminal evolves.
+                    </p>
+                    <pre id="executionResultView" class="codebox">-</pre>
+                    <div id="executionResultLink" class="muted" style="margin-top: 12px;"></div>
+                </div>
+
+                <div class="card">
+                    <h3>Metadata Issues</h3>
+                    <div id="metadataIssues">No validation issues loaded.</div>
+                </div>
+
+                <div class="card">
+                    <h3>Config Snapshot</h3>
+                    <pre id="configDump" class="codebox">-</pre>
+                </div>
+
+                <div class="card full-span">
+                    <h3>Raw cosmos.toml</h3>
+                    <div id="metadataStatus" class="muted" style="margin-bottom: 12px;">No cosmos.toml metadata loaded</div>
+                    <pre id="metadataRaw" class="codebox rawbox">-</pre>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/toml.js"></script>
+    <script src="js/cosmos-toml.js"></script>
+    <script src="js/wallet.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

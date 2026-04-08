@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cosmos DEX Terminal - Cosmos DEX Terminal</title>
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+    <div class="shell">
+        <aside class="sidebar">
+            <div class="brand">COSMOS DEX</div>
+            <nav>
+                <a href="index.html" class="active">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="markets.html">Markets</a>
+                <a href="trade.html">Trade</a>
+                <a href="liquidity.html">Liquidity</a>
+                <a href="activity.html">Activity</a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <h1>Cosmos DEX Terminal</h1>
+                    <p>Wallet-first, orderbook-first trading terminal for Cosmos Hub with domain-hosted metadata and trust-aware market handling.</p>
+                </div>
+                <button id="walletBtn" class="btn" type="button">Connect Wallet</button>
+            </header>
+
+            <section class="hero-grid">
+                <div class="card hero">
+                    <h2>Posted bids. Posted asks. Real orderbook flow.</h2>
+                    <p>
+                        This shell is now evolving toward a Lobstr / StellarTerm-style Cosmos trading terminal built around a live
+                        orderbook contract. It includes wallet support, <code>cosmos.toml</code> trust overlays, chart-ready market
+                        surfaces, and the foundation for token-by-address loading.
+                    </p>
+                    <div class="button-row">
+                        <a class="btn" href="trade.html">Open Trade Terminal</a>
+                        <a class="btn ghost" href="markets.html">View Markets</a>
+                    </div>
+                </div>
+
+                <div class="card stats">
+                    <h3>Live terminal status</h3>
+                    <ul class="stat-list">
+                        <li><span>Frontend shell</span><strong>Ready</strong></li>
+                        <li><span>Orderbook contract</span><strong>Live</strong></li>
+                        <li><span>cosmos.toml system</span><strong>Integrated</strong></li>
+                        <li><span>Wallet module</span><strong>Integrated</strong></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="grid three-up">
+                <div class="card">
+                    <h3>Metadata Trust</h3>
+                    <div id="metadataTrustBadge" class="trust-badge unknown">Unknown</div>
+                    <div id="metadataProject" class="metadata-project">-</div>
+                    <div id="metadataSummary">No metadata summary available yet.</div>
+                </div>
+
+                <div class="card">
+                    <h3>Metadata Issues</h3>
+                    <div id="metadataIssues">No validation issues loaded.</div>
+                </div>
+
+                <div class="card">
+                    <h3>Metadata Assets</h3>
+                    <div id="metadataAssets">No asset metadata loaded.</div>
+                </div>
+            </section>
+
+            <section class="grid two-up">
+                <div class="card">
+                    <h3>Market Snapshot</h3>
+                    <div class="stat-list">
+                        <div class="stat-item">
+                            <span>Selected market</span>
+                            <strong id="homeMarketPair">ATOM / TOKEN</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Top of book</span>
+                            <strong id="homeMarketLast">-</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Orderbook status</span>
+                            <strong id="homeMarketLiquidity">Not loaded</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Quick Actions</h3>
+                    <div class="button-row">
+                        <a class="btn" href="trade.html">Create Order</a>
+                        <a class="btn ghost" href="markets.html">Open Markets</a>
+                    </div>
+                    <p class="muted" style="margin-top: 14px;">
+                        This section is reserved for wallet-aware shortcuts once live order creation, fills, and cancels are wired.
+                    </p>
+                </div>
+            </section>
+
+            <section class="grid two-up">
+                <div class="card">
+                    <h3>Market Chart</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        Chart-ready container for the primary market. This should ultimately reflect fills and price movement from the live orderbook.
+                    </p>
+                    <div id="homePriceChart" class="chart-shell" aria-label="Market chart area">
+                        <div class="chart-empty">Market chart will render here once live orderbook price data is wired.</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Bid / Ask Depth</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        Reserved for orderbook depth visualization for the currently selected market.
+                    </p>
+                    <div id="homeLiquidityChart" class="chart-shell" aria-label="Orderbook depth chart area">
+                        <div class="chart-empty">Bid / ask depth visualization will render here once book data is wired.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid">
+                <div class="card">
+                    <h3>What to do next</h3>
+                    <ol class="checklist">
+                        <li>Point <code>js/config.js</code> to the live Cosmos Hub REST endpoint</li>
+                        <li>Replace placeholder token metadata with a real live asset</li>
+                        <li>Load the live orderbook on the trade and markets pages</li>
+                        <li>Wire real signing and broadcast for create-order flow</li>
+                        <li>Add token-by-address loading next</li>
+                    </ol>
+                </div>
+
+                <div class="card">
+                    <h3>Raw cosmos.toml</h3>
+                    <div id="metadataStatus" class="muted" style="margin-bottom: 12px;">No cosmos.toml metadata loaded</div>
+                    <pre id="metadataRaw" class="codebox rawbox">-</pre>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/toml.js"></script>
+    <script src="js/cosmos-toml.js"></script>
+    <script src="js/wallet.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

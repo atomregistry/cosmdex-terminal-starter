@@ -1,0 +1,75 @@
+VERSION = "0.1"
+NETWORK = "cosmos"
+PROJECT_NAME = "Cosmos DEX Terminal"
+PROJECT_URL = "https://cosmdex.com"
+DESCRIPTION = "Wallet-first Cosmos trading terminal with domain-hosted metadata and trust overlays."
+ICON = "https://cosmdex.com/assets/icon.png"
+DEFAULT_LANGUAGE = "en"
+LAST_UPDATED = "2026-04-06T00:00:00Z"
+
+[ORG]
+LEGAL_NAME = "Cosmos DEX Labs"
+DISPLAY_NAME = "Cosmos DEX"
+URL = "https://cosmdex.com"
+EMAIL = "support@cosmdex.com"
+SUPPORT_URL = "https://cosmdex.com/support"
+GITHUB = "https://github.com/cosmdex"
+
+[VERIFICATION]
+DOMAIN_VERIFIED = true
+POLICY_URL = "https://cosmdex.com/security"
+AUDIT_URLS = [
+  "https://cosmdex.com/audits/example-audit-1.pdf"
+]
+ATTESTATION = "This domain publishes the official metadata for Cosmos DEX Terminal assets and services."
+
+[[CHAINS]]
+CHAIN_ID = "cosmoshub-4"
+CHAIN_NAME = "Cosmos Hub"
+ADDRESS_PREFIX = "cosmos"
+RPC = "https://rpc.cosmos.network"
+REST = "https://api.cosmos.network"
+EXPLORER = "https://www.mintscan.io/cosmos"
+
+[[APPS]]
+TYPE = "dex"
+NAME = "Cosmos DEX Terminal"
+URL = "https://cosmdex.com"
+DESCRIPTION = "Trade, track, and manage Cosmos assets"
+OFFICIAL = true
+
+[[ASSETS]]
+TYPE = "native"
+CHAIN_ID = "cosmoshub-4"
+SYMBOL = "ATOM"
+NAME = "Cosmos Hub Atom"
+DENOM = "uatom"
+DECIMALS = 6
+DESCRIPTION = "Native staking and gas asset"
+LOGO = "https://cosmdex.com/assets/atom.png"
+OFFICIAL = true
+STATUS = "verified"
+REVIEW_LEVEL = "low"
+REQUIRES_EXTRA_SCRUTINY = false
+
+[[ASSETS]]
+TYPE = "cw20"
+CHAIN_ID = "cosmoshub-4"
+SYMBOL = "TOKEN"
+NAME = "Example CW20 Token"
+CONTRACT_ADDRESS = "cosmos1replace..."
+DECIMALS = 6
+DESCRIPTION = "Example token for first market"
+LOGO = "https://cosmdex.com/assets/token.png"
+OFFICIAL = false
+STATUS = "experimental"
+REVIEW_LEVEL = "high"
+REQUIRES_EXTRA_SCRUTINY = true
+RISK_NOTE = "Non-native asset. Verify contract and market liquidity before trading."
+
+[[MARKETS]]
+BASE_SYMBOL = "ATOM"
+QUOTE_SYMBOL = "TOKEN"
+PAIR_CONTRACT = "cosmos1replacepair..."
+CHAIN_ID = "cosmoshub-4"
+STATUS = "official"

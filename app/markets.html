@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markets - Cosmos DEX Terminal</title>
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+    <div class="shell">
+        <aside class="sidebar">
+            <div class="brand">COSMOS DEX</div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="markets.html" class="active">Markets</a>
+                <a href="trade.html">Trade</a>
+                <a href="liquidity.html">Liquidity</a>
+                <a href="activity.html">Activity</a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <h1>Markets</h1>
+                    <p>Wallet-first market overview with metadata trust context, live orderbook awareness, and chart-ready bid / ask depth blocks.</p>
+                </div>
+                <button id="walletBtn" class="btn" type="button">Connect Wallet</button>
+            </header>
+
+            <section class="grid two-up">
+                <div class="card">
+                    <h3>Markets Module</h3>
+                    <p class="muted">
+                        This page is now structured as an orderbook-first markets screen. It carries wallet support,
+                        metadata trust, market discovery space, and room for live bid / ask monitoring.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Metadata Trust</h3>
+                    <div id="metadataTrustBadge" class="trust-badge unknown">Unknown</div>
+                    <div id="metadataProject" class="metadata-project">-</div>
+                    <div id="metadataSummary">No metadata summary available yet.</div>
+                </div>
+            </section>
+
+            <section class="grid two-up">
+                <div class="card">
+                    <h3>Market Overview</h3>
+                    <div class="stat-list">
+                        <div class="stat-item">
+                            <span>Primary market</span>
+                            <strong id="marketsPrimaryPair">ATOM / TOKEN</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Market state</span>
+                            <strong id="marketsPrimaryStatus">Awaiting live orderbook</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Orderbook address</span>
+                            <strong id="marketsPrimaryAddress">Not set</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Metadata Issues</h3>
+                    <div id="metadataIssues">No validation issues loaded.</div>
+                </div>
+            </section>
+
+            <section class="grid two-up">
+                <div class="card">
+                    <h3>Market Chart</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        This panel is reserved for a real functional market chart driven by fills and market activity, not a static image.
+                    </p>
+                    <div id="marketsPriceChart" class="chart-shell" aria-label="Markets chart area">
+                        <div class="chart-empty">Market chart will render here when live orderbook history is wired.</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Bid / Ask Depth</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        This panel is reserved for current orderbook depth visualization for the selected market.
+                    </p>
+                    <div id="marketsLiquidityChart" class="chart-shell" aria-label="Markets orderbook depth chart area">
+                        <div class="chart-empty">Bid / ask depth chart will render here when book data is wired.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid">
+                <div class="card">
+                    <h3>Tracked Markets</h3>
+                    <div class="table-shell">
+                        <table class="market-table">
+                            <thead>
+                                <tr>
+                                    <th>Market</th>
+                                    <th>Status</th>
+                                    <th>Trust</th>
+                                    <th>Book</th>
+                                    <th>Source</th>
+                                </tr>
+                            </thead>
+                            <tbody id="marketsTableBody">
+                                <tr>
+                                    <td>ATOM / TOKEN</td>
+                                    <td>Awaiting first live book</td>
+                                    <td>Metadata-aware</td>
+                                    <td>-</td>
+                                    <td>Orderbook + cosmos.toml</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid two-up">
+                <div class="card">
+                    <h3>Metadata Assets</h3>
+                    <div id="metadataAssets">No asset metadata loaded.</div>
+                </div>
+
+                <div class="card">
+                    <h3>Raw Metadata Status</h3>
+                    <div id="metadataStatus" class="muted" style="margin-bottom: 12px;">No cosmos.toml metadata loaded</div>
+                    <pre id="metadataRaw" class="codebox rawbox">-</pre>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/toml.js"></script>
+    <script src="js/cosmos-toml.js"></script>
+    <script src="js/wallet.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

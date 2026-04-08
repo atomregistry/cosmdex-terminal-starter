@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Cosmos DEX Terminal</title>
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+    <div class="shell">
+        <aside class="sidebar">
+            <div class="brand">COSMOS DEX</div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="markets.html">Markets</a>
+                <a href="trade.html">Trade</a>
+                <a href="liquidity.html">Liquidity</a>
+                <a href="activity.html">Activity</a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Wallet-first terminal overview with trust-aware metadata, live orderbook context, and chart-ready market monitoring.</p>
+                </div>
+                <button id="walletBtn" class="btn" type="button">Connect Wallet</button>
+            </header>
+
+            <section class="grid two-up">
+                <div class="card">
+                    <h3>Dashboard Module</h3>
+                    <p class="muted">
+                        This page is now structured as an orderbook-first terminal dashboard. It is ready for shared wallet state,
+                        metadata trust context, open-order monitoring, and live market snapshots.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Metadata Trust</h3>
+                    <div id="metadataTrustBadge" class="trust-badge unknown">Unknown</div>
+                    <div id="metadataProject" class="metadata-project">-</div>
+                    <div id="metadataSummary">No metadata summary available yet.</div>
+                </div>
+            </section>
+
+            <section class="grid three-up">
+                <div class="card">
+                    <h3>Wallet Snapshot</h3>
+                    <div class="stat-list">
+                        <div class="stat-item">
+                            <span>Wallet status</span>
+                            <strong id="dashboardWalletStatus">Awaiting wallet</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Terminal mode</span>
+                            <strong id="dashboardPortfolioValue">-</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Tracked assets</span>
+                            <strong id="dashboardTrackedAssets">-</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Primary Market</h3>
+                    <div class="stat-list">
+                        <div class="stat-item">
+                            <span>Market</span>
+                            <strong id="dashboardPrimaryPair">ATOM / TOKEN</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Market state</span>
+                            <strong id="dashboardMarketState">Awaiting live orderbook</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Trust mode</span>
+                            <strong id="dashboardTrustMode">Metadata-aware</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Metadata Issues</h3>
+                    <div id="metadataIssues">No validation issues loaded.</div>
+                </div>
+            </section>
+
+            <section class="grid two-up">
+                <div class="card">
+                    <h3>Market Chart</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        This panel is reserved for live market movement based on fills and orderbook activity.
+                    </p>
+                    <div id="dashboardPortfolioChart" class="chart-shell" aria-label="Dashboard market chart area">
+                        <div class="chart-empty">Market chart will render here once live orderbook price history is wired.</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Bid / Ask Depth</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        This panel is reserved for a real selected-market depth view, not a decorative placeholder.
+                    </p>
+                    <div id="dashboardMarketChart" class="chart-shell" aria-label="Dashboard orderbook depth chart area">
+                        <div class="chart-empty">Bid / ask depth chart will render here once live book data is wired.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid two-up">
+                <div class="card">
+                    <h3>Metadata Assets</h3>
+                    <div id="metadataAssets">No asset metadata loaded.</div>
+                </div>
+
+                <div class="card">
+                    <h3>Raw Metadata Status</h3>
+                    <div id="metadataStatus" class="muted" style="margin-bottom: 12px;">No cosmos.toml metadata loaded</div>
+                    <pre id="metadataRaw" class="codebox rawbox">-</pre>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/toml.js"></script>
+    <script src="js/cosmos-toml.js"></script>
+    <script src="js/wallet.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

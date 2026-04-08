@@ -1,0 +1,11 @@
+[
+  {
+    "name": "ATOM/TOKEN",
+    "pair_contract": "REPLACE_WITH_PAIR_CONTRACT_ADDRESS",
+    "assets": [
+      { "type": "native", "denom": "uatom" },
+      { "type": "cw20", "contract": "REPLACE_WITH_CW20_ADDRESS" }
+    ],
+    "fee_bps": 30
+  }
+]

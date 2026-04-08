@@ -1,0 +1,13 @@
+/mnt/c/Users/seanf/Downloads/cosmdex-terminal-starter/contracts/cosmdex-orderbook/target/debug/deps/cw20-4a22fa6b96318402.d: /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/lib.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/balance.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/coin.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/denom.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/helpers.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/logo.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/msg.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/query.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/receiver.rs
+
+/mnt/c/Users/seanf/Downloads/cosmdex-terminal-starter/contracts/cosmdex-orderbook/target/debug/deps/libcw20-4a22fa6b96318402.rmeta: /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/lib.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/balance.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/coin.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/denom.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/helpers.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/logo.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/msg.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/query.rs /home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/receiver.rs
+
+/home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/lib.rs:
+/home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/balance.rs:
+/home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/coin.rs:
+/home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/denom.rs:
+/home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/helpers.rs:
+/home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/logo.rs:
+/home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/msg.rs:
+/home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/query.rs:
+/home/seanf/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-2.0.0/src/receiver.rs:

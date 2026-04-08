@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Activity - Cosmos DEX Terminal</title>
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+    <div class="shell">
+        <aside class="sidebar">
+            <div class="brand">COSMOS DEX</div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="markets.html">Markets</a>
+                <a href="trade.html">Trade</a>
+                <a href="liquidity.html">Liquidity</a>
+                <a href="activity.html" class="active">Activity</a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <h1>Activity</h1>
+                    <p>Wallet-first activity center for orders, fills, cancels, and trust-aware market events across the live orderbook terminal.</p>
+                </div>
+                <button id="walletBtn" class="btn" type="button">Connect Wallet</button>
+            </header>
+
+            <section class="grid two-up">
+                <div class="card">
+                    <h3>Activity Module</h3>
+                    <p class="muted">
+                        This page is now structured as an orderbook-first activity center. It is ready for wallet-aware order history,
+                        fill tracking, cancel events, and trust-aware market labeling.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Metadata Trust</h3>
+                    <div id="metadataTrustBadge" class="trust-badge unknown">Unknown</div>
+                    <div id="metadataProject" class="metadata-project">-</div>
+                    <div id="metadataSummary">No metadata summary available yet.</div>
+                </div>
+            </section>
+
+            <section class="grid three-up">
+                <div class="card">
+                    <h3>Wallet Activity</h3>
+                    <div class="stat-list">
+                        <div class="stat-item">
+                            <span>Wallet status</span>
+                            <strong id="activityWalletStatus">Awaiting wallet</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Recent orders</span>
+                            <strong id="activitySwapCount">-</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Recent fills / cancels</span>
+                            <strong id="activityLiquidityCount">-</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Tracked Market Activity</h3>
+                    <div class="stat-list">
+                        <div class="stat-item">
+                            <span>Primary market</span>
+                            <strong id="activityPrimaryPair">ATOM / TOKEN</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Market state</span>
+                            <strong id="activityMarketState">Awaiting live orderbook</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Trust mode</span>
+                            <strong id="activityTrustMode">Metadata-aware</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Metadata Issues</h3>
+                    <div id="metadataIssues">No validation issues loaded.</div>
+                </div>
+            </section>
+
+            <section class="grid two-up">
+                <div class="card">
+                    <h3>Order Timeline</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        This panel is reserved for a functional timeline chart for order creation, fills, and cancel activity.
+                    </p>
+                    <div id="activityTimelineChart" class="chart-shell" aria-label="Activity timeline chart area">
+                        <div class="chart-empty">Order timeline chart will render here once live activity data is wired.</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Order / Fill Mix</h3>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        This panel is reserved for a functional mix chart across order creates, fills, cancels, and other market events.
+                    </p>
+                    <div id="activityMixChart" class="chart-shell" aria-label="Activity mix chart area">
+                        <div class="chart-empty">Order / fill mix chart will render here once live event data is wired.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid">
+                <div class="card">
+                    <h3>Recent Activity</h3>
+                    <div class="table-shell">
+                        <table class="market-table">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Market</th>
+                                    <th>Status</th>
+                                    <th>Trust</th>
+                                    <th>Reference</th>
+                                </tr>
+                            </thead>
+                            <tbody id="activityTableBody">
+                                <tr>
+                                    <td>System</td>
+                                    <td>ATOM / TOKEN</td>
+                                    <td>Pending live order activity feed</td>
+                                    <td>Metadata-aware</td>
+                                    <td>Awaiting wallet + onchain order / fill wiring</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid two-up">
+                <div class="card">
+                    <h3>Metadata Assets</h3>
+                    <div id="metadataAssets">No asset metadata loaded.</div>
+                </div>
+
+                <div class="card">
+                    <h3>Raw Metadata Status</h3>
+                    <div id="metadataStatus" class="muted" style="margin-bottom: 12px;">No cosmos.toml metadata loaded</div>
+                    <pre id="metadataRaw" class="codebox rawbox">-</pre>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/toml.js"></script>
+    <script src="js/cosmos-toml.js"></script>
+    <script src="js/wallet.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
